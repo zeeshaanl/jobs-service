@@ -1,1 +1,1 @@
-Service to compile jobs from providers - built with Clean Architecture
+Service to compile jobs from providers - built with the Clean Architecture Pattern
