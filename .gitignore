@@ -1,0 +1,9 @@
+node_modules/
+.build
+.idea
+.env
+*.iml
+coverage/
+i18n
+!i18n/.gitkeep
+test/unit/mock/postings.xml
