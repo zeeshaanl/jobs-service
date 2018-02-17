@@ -35,10 +35,10 @@ const searchJobs = () => {
 };
 
 const runProgram = async () => {
-    // await jobRun();
+    await jobRun();
     // console.log(InMemoryRepo.inMemoryVariable);
-    const jobs = await searchJobs();
-    console.log(jobs);
+    // const jobs = await searchJobs();
+    // console.log(jobs);
 };
 
 runProgram();

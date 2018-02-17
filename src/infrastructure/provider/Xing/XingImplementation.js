@@ -33,7 +33,6 @@ export default class XingImplementation {
                 singlePost.job_type[0] === 'CONTRACTOR'
             ).map(freelancePosts =>
                 new Job({
-                    id: parseInt(freelancePosts.id[0], 10),
                     title: freelancePosts.title[0],
                     companyName: freelancePosts.company_name[0],
                     description: freelancePosts.description[0],

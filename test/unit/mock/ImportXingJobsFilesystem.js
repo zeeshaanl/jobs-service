@@ -7,7 +7,7 @@ const ImportJobsFromXingFilesystem = async () => {
     const parser = new x2js.Parser();
 
     const readFile = util.promisify(fs.readFile);
-    const rawXmlData = await readFile('test/unit/mock/postingsSmall.xml', 'utf-8');
+    const rawXmlData = await readFile('test/unit/mock/postings.xml', 'utf-8');
 
     const parserPromise = util.promisify(parser.parseString.bind(parser));
     const result = await parserPromise(rawXmlData);

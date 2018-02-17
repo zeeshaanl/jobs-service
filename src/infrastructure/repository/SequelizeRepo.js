@@ -1,9 +1,9 @@
-import Job from '../../domain/entity/Job';
+import JobViewModel from '../viewModel/JobViewModel';
 
 /**
  * @implements {JobsRepository}
  */
-export default class sequelizeRepo {
+export default class SequelizeRepo {
     /**
      *
      * @param sequelizeDatabaseObject
@@ -59,17 +59,15 @@ export default class sequelizeRepo {
         });
 
         return jobsFromDatabase.map(job => {
-            const { id, title, companyName, description, applyLink, city, tags } = job.dataValues;
-            return new Job({
+            const { id, title, companyName, description, applyLink, city } = job.dataValues;
+            return new JobViewModel({
                 id,
                 title,
                 companyName,
                 description,
                 applyLink,
-                city,
-                tags
+                city
             })
         });
-
     }
 }
