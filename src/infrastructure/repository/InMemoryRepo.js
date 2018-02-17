@@ -20,7 +20,7 @@ export default class InMemoryRepo {
      */
     searchForJobs(searchObject) {
         return InMemoryRepo.inMemoryVariable.filter(job =>
-            (searchObject.title ? job.title === searchObject.title : true) &&
+            (searchObject.jobTitle ? job.title === searchObject.jobTitle : true) &&
             (searchObject.companyName ? job.companyName === searchObject.companyName : true) &&
             (searchObject.city ? job.city === searchObject.city : true)
         )
