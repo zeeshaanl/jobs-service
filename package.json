@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --verbose --exec \"babel-node\" src/server.js",
-    "import-jobs": "nodemon --verbose --exec \"babel-node\" bin/main.js",
+    "start": "nodemon --verbose --exec \"babel-node\" server.js",
+    "import-jobs": "nodemon --verbose --exec \"babel-node\" cron/ImportJobs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
