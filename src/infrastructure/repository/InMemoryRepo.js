@@ -1,9 +1,15 @@
+import { JobsRepository } from '../../domain/repository/JobsRepository';
+
 /**
  * @implements {JobsRepository}
  */
-export default class InMemoryRepo {
+export default class InMemoryRepo extends JobsRepository {
 
     static inMemoryVariable;
+
+    constructor() {
+        super();
+    }
 
     /**
      *

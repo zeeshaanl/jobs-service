@@ -1,11 +1,13 @@
 import Job from '../../../domain/entity/Job';
+import { Provider } from '../../../domain/service/provider/Provider';
 
 /**
  * @class
  * @implements {Provider}
  */
-export default class XingImplementation {
+export default class XingImplementation extends Provider {
     constructor(apiService) {
+        super();
         this.apiService = apiService;
     }
 
@@ -16,8 +18,8 @@ export default class XingImplementation {
      *
      */
     async importJobs() {
-        const rawJobs = await this.apiService();
-        return this.mapReponseToJobs(rawJobs);
+        const rawJsonJobs = await this.apiService.getRawJsonJobs();
+        return this.mapReponseToJobs(rawJsonJobs);
     }
 
     /**

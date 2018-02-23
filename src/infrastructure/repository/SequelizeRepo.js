@@ -1,14 +1,16 @@
 import JobViewModel from '../viewModel/JobViewModel';
+import { JobsRepository } from '../../domain/repository/JobsRepository';
 
 /**
  * @implements {JobsRepository}
  */
-export default class SequelizeRepo {
+export default class SequelizeRepo extends JobsRepository {
     /**
      *
      * @param sequelizeDatabaseObject
      */
     constructor(sequelizeDatabaseObject) {
+        super();
         this.sequelizeDatabaseObject = sequelizeDatabaseObject;
     }
 

@@ -4,7 +4,7 @@ import appContainerInstance from '../../../AppContainer';
 const express = require('express');
 const router = express.Router();
 
-router.get('/jobs', async (req, res, next) => {
+router.get('/jobs', async (req, res) => {
     const { jobTitle, city } = req.query;
     if (!jobTitle && !city) {
         res.status(422).send("Missing params: jobTitle and city");

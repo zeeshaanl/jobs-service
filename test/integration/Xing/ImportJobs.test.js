@@ -1,5 +1,5 @@
 import XingImplementation from '../../../src/infrastructure/provider/Xing/XingImplementation';
-import ImportJobsFromXingFilesystem from '../../unit/mock/ImportXingJobsFilesystem';
+import ImportJobsFromXingFilesystem from '../../unit/mock/ApiServiceFilesystemMock';
 
 // const xing = new XingImplementation(ImportJobsFromXingFilesystem);
 
