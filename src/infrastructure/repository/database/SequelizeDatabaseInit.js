@@ -3,8 +3,8 @@ const Op = Sequelize.Op;
 
 export default class SequelizeDatabaseInit {
     constructor() {
-        const sequelize = new Sequelize('jobiLocal', 'root', 'password', {
-            host: 'localhost',
+        const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+            host: process.env.DB_HOST,
             dialect: 'mysql',
             operatorsAliases: Op
         });
