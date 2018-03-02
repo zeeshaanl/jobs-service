@@ -1,7 +1,6 @@
 import mapXmlToJson from './MapXmlToJson';
 
-var https = require('follow-redirects').https;
-
+const https = require('follow-redirects').https;
 const zlib = require('zlib');
 const gunzip = zlib.createGunzip();
 
@@ -9,14 +8,13 @@ export default class ApiService {
     async getRawJsonJobs() {
         return (
             new Promise(resolve => {
-                var options = {
+                const options = {
                     "hostname": "www.xing.com",
                     "method": "GET",
                     "path": "/jobs/postings.xml.gz",
                     "headers": {
                         "Accept": "application/rss+xml"
-                    },
-                    "gzip": true
+                    }
                 };
                 let responseXmlData = '';
 
