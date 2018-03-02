@@ -5,19 +5,21 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --verbose --exec \"babel-node\" server.js",
-    "import-jobs": "nodemon --verbose --exec \"babel-node\" cron/ImportJobs.js",
+    "import-jobs": "nodemon --verbose --exec \"babel-node\" --max-old-space-size=32000 cron/ImportJobs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
+    "follow-redirects": "^1.4.1",
     "jest": "^22.1.4",
     "morgan": "^1.9.0",
     "mysql2": "^1.5.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "sequelize": "^4.32.3",
+    "winston": "^3.0.0-rc1",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {

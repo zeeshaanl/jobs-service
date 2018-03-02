@@ -23,8 +23,9 @@ router.get('/jobs', async (req, res) => {
         const jobs = await appContainerInstance.findJobsUseCase.invoke(searchObject);
         if (!jobs || !jobs.length) {
             res.status(404).send("No jobs found.");
+        } else {
+            res.json(jobs);
         }
-        res.json(jobs);
     } catch (e) {
         res.status(500).send("There was an error finding jobs.");
     }

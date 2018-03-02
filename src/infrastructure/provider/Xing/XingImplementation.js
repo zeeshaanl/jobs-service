@@ -29,6 +29,7 @@ export default class XingImplementation extends Provider {
      */
     mapReponseToJobs(rawJobs) {
         try {
+            console.log('in json response to jobs');
             const { postings } = rawJobs.jobs;
             const { posting: postingArray } = postings[0];
             return postingArray.filter(singlePost =>
