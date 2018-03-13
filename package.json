@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.4",
     "elasticsearch": "^14.1.0",
     "express": "^4.16.2",
     "follow-redirects": "^1.4.1",

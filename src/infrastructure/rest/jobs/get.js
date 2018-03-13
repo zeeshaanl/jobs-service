@@ -9,25 +9,27 @@ router.get('/jobs', async (req, res) => {
     if (!jobTitle && !city) {
         res.status(422).send("Missing params: jobTitle and city");
     }
-    if (!jobTitle) {
+    else if (!jobTitle) {
         res.status(422).send("Missing param: jobTitle");
     }
-    if (!city) {
+    else if (!city) {
         res.status(422).send("Missing param: city");
     }
-    try {
-        const searchObject = new SearchObject({
-            jobTitle,
-            city
-        });
-        const jobs = await appContainerInstance.findJobsUseCase.invoke(searchObject);
-        if (!jobs || !jobs.length) {
-            res.status(404).send("No jobs found.");
-        } else {
-            res.json(jobs);
+    else {
+        try {
+            const searchObject = new SearchObject({
+                jobTitle,
+                city
+            });
+            const jobs = await appContainerInstance.findJobsUseCase.invoke(searchObject);
+            if (!jobs || !jobs.length) {
+                res.status(404).send("No jobs found.");
+            } else {
+                res.json(jobs);
+            }
+        } catch (e) {
+            res.status(500).send("There was an error finding jobs.");
         }
-    } catch (e) {
-        res.status(500).send("There was an error finding jobs.");
     }
 });
 

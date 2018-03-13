@@ -1,11 +1,12 @@
 import XingImplementation from '../../../src/infrastructure/provider/Xing/XingImplementation';
-import ImportJobsFromXingFilesystem from '../../unit/mock/ApiServiceFilesystemMock';
+import ApiServiceFilesystemMock from '../../unit/mock/ApiServiceFilesystemMock';
 
 // const xing = new XingImplementation(ImportJobsFromXingFilesystem);
 
 test('Get jobs from Api service', async () => {
     try {
-        const jobs = await ImportJobsFromXingFilesystem();
+        const apiServiceFilesystemMock = new ApiServiceFilesystemMock();
+        const jobs = await apiServiceFilesystemMock.getRawJsonJobs();
         expect(jobs).toBeDefined();
     } catch (e) {
         console.dir(e);
