@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Post jobs to our service</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="public/css/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="public/js/main.js"></script>
+    <!--<link rel="stylesheet" href="assets/css/custom.css?v2" />-->
+</head>
+<body>
+<h1>Job Entry</h1>
+<form id="postJobs" action="/postJobs" method="post">
+    <div class='c-job-field'>
+        <label for="title">Job Title</label>
+        <input type="text" id="title" name="title" />
+    </div>
+    <div class='c-job-field'>
+        <label for="companyName">Company Name</label>
+        <input type="text" id="companyName" name="companyName">
+    </div>
+    <div class='c-job-field'>
+        <label for="description">Description</label>
+        <textarea id="description" name="description"></textarea>
+    </div>
+    <div class='c-job-field'>
+        <label for="applyLink">Apply Link</label>
+        <input id="applyLink" name="applyLink" />
+    </div>
+    <div class='c-job-field'>
+        <label for="city">City</label>
+        <input id="city" name="city" />
+    </div>
+    <div class='c-job-field__submit-container'>
+        <button class='c-job-field__submit' type='submit'>Submit</button>
+        <div class="loader-container">
+            <div class="loader hidden"></div>
+        </div>
+        <br />
+        <div class='c-feedback'></div>
+    </div>
+</form>
+</body>
+</html>

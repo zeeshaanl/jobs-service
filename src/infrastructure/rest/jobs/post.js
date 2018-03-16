@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/test', async (req, res) => {
-    res.send("This is a test post route");
+router.post('/postJobs', async (req, res) => {
+    const { title, companyName, description, applyLink, city } = req.body;
+    console.log(req.body);
+    res.send(200);
 });
 
 export default router;
