@@ -6,8 +6,8 @@ export class JobsRepository {
     /**
      * @method
      * @name JobsRepository#saveJobs
-     * @param {Array<Job>} jobs.
-     * @returns {Array<Job>}
+     * @param {Array<Job>} jobs
+     * @returns void
      */
     saveJobs(jobs) {
         throw new Error('Not yet implemented');
@@ -16,7 +16,7 @@ export class JobsRepository {
     /**
      *
      * @param {SearchObject} searchObject
-     * @returns {Array.<Job>}
+     * @returns {Promise<Array.<Job>>}
      */
     searchForJobs(searchObject) {
         throw new Error('Not implemented yet')
