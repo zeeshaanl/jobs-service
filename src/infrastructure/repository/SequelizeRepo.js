@@ -25,8 +25,17 @@ export default class SequelizeRepo extends JobsRepository {
     }
 
     /**
+     * @param {Job} job
+     * @return {Promise<void>}
+     */
+    saveCustomJob(job) {
+        return this.sequelizeDatabaseObject.jobs.create(job);
+    }
+
+    /**
      *
      * @param {SearchObject} searchObject
+     * @returns {Promise<Array.<Job>>}
      */
     async searchForJobs(searchObject) {
         const { op } = this.sequelizeDatabaseObject;

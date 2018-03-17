@@ -1,5 +1,6 @@
 import SearchObject from '../../../domain/searchObject/SearchObject';
 import appContainerInstance from '../../../AppContainer';
+import authenticate from '../basicAuth/authenticate';
 
 const express = require('express');
 const router = express.Router();
@@ -31,6 +32,10 @@ router.get('/jobs', async (req, res) => {
             res.status(500).send("There was an error finding jobs.");
         }
     }
+});
+
+router.get('/enterJobs', authenticate, (req, res) => {
+    res.render('index');
 });
 
 export default router;

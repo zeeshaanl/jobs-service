@@ -16,18 +16,20 @@ export default class ElasticSearch extends JobsRepository {
 
     /**
      * @param {Array.<Job>} jobs
-     * @return void
+     * @returns void
      */
     saveJobs(jobs) {
         jobs.forEach(job => {
-            const { id, ...jobBody } = job;
-            this.client.index({
-                index: 'jobs',
-                type: 'string',
-                id,
-                body: jobBody
-            });
+            this.handleJobSave(job, 'jobs');
         });
+    }
+
+    /**
+     * @param {Job} job
+     * @returns {Promise<void>}
+     */
+    saveCustomJob(job) {
+        return this.handleJobSave(job, 'customjobs');
     }
 
     /**
@@ -38,7 +40,7 @@ export default class ElasticSearch extends JobsRepository {
     async searchForJobs(searchObject) {
         const { jobTitle, city } = searchObject;
         const elasticSearchJobs = await this.client.search({
-            index: 'jobs',
+            index: 'jobs, customjobs',
             type: 'string',
             body: {
                 query: {
@@ -76,6 +78,26 @@ export default class ElasticSearch extends JobsRepository {
                 applyLink,
                 city
             })
+        });
+    }
+
+    /**
+     *
+     * @param {Job} job
+     * @param {string} index
+     * @returns {Promise<void>}
+     */
+    handleJobSave(job, index) {
+        console.log(index);
+        if (index !== 'jobs' && index !== 'customjobs') {
+            throw Error('Index must be named jobs or customjobs');
+        }
+        const { id, ...jobBody } = job;
+        return this.client.index({
+            index,
+            type: 'string',
+            id,
+            body: jobBody
         });
     }
 }

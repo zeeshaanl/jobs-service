@@ -11,7 +11,7 @@ export default class ImportJobsUseCase {
     /**
      *
      * @param {Provider} provider
-     * @returns {Promise<void>}
+     * @returns void
      */
     async invoke(provider) {
         const jobs = await provider.importJobs();

@@ -10,7 +10,7 @@ export default class FindJobsUseCase {
     /**
      *
      * @param {SearchObject} searchObject
-     * @returns {Array.<Job>}
+     * @returns {Promise<Array.<Job>>}
      */
     invoke(searchObject) {
         return this.jobsRepository.searchForJobs(searchObject);

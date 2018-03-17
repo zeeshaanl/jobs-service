@@ -4,16 +4,18 @@ import SequelizeRepo from './infrastructure/repository/SequelizeRepo';
 import ImportJobsUseCase from './application/usecase/ImportJobsUseCase';
 import SequelizeDatabaseObject from './infrastructure/repository/database/SequelizeDatabaseInit';
 import ElasticSearch from './infrastructure/repository/ElasticSearch';
+import SaveCustomJob from './application/usecase/SaveCustomJob';
 
 class AppContainer {
     constructor() {
         const sequelizeDatabaseObject = new SequelizeDatabaseObject();
         const sequelizeRepo = new SequelizeRepo(sequelizeDatabaseObject);
 
-        const elastsearchRepo = new ElasticSearch();
+        const elasticSearchRepo = new ElasticSearch();
 
-        this.importJobsUseCase = new ImportJobsUseCase(sequelizeRepo);
-        this.findJobsUseCase = new FindJobsUseCase(sequelizeRepo);
+        this.importJobsUseCase = new ImportJobsUseCase(elasticSearchRepo);
+        this.findJobsUseCase = new FindJobsUseCase(elasticSearchRepo);
+        this.saveCustomJobUseCase = new SaveCustomJob(elasticSearchRepo);
     }
 }
 

@@ -14,12 +14,22 @@ export class JobsRepository {
     }
 
     /**
+     * @method
+     * @name JobsRepository#saveCustomJob
+     * @param {Job} job
+     * @returns {Promise<void>}
+     */
+    saveCustomJob(job) {
+        throw new Error('Not implemented yet');
+    }
+
+    /**
      *
      * @param {SearchObject} searchObject
      * @returns {Promise<Array.<Job>>}
      */
     searchForJobs(searchObject) {
-        throw new Error('Not implemented yet')
+        throw new Error('Not implemented yet');
     }
 
     //
