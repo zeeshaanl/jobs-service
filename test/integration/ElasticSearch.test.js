@@ -16,11 +16,11 @@ test('Search for jobs in Elastic Search', async () => {
         const elasticSearch = new ElasticSearch();
 
         const jobTitle = "Sicherheitsüberwachungstechnik";
-        const city = "Dortmund";
+        const location = "Dortmund";
 
         const searchObject = new SearchObject({
             jobTitle,
-            city
+            location
         });
         const jobs = await elasticSearch.searchForJobs(searchObject);
         expect(Array.isArray(jobs)).toBe(true);

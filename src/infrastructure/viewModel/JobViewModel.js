@@ -9,15 +9,15 @@ export default class JobViewModel {
      * @param {string} companyName
      * @param {string} description
      * @param {string} applyLink
-     * @param {string} city
+     * @param {string} location
      */
-    constructor({ id, title, companyName, description, applyLink, city }) {
+    constructor({ id, title, companyName, description, applyLink, location }) {
         this.id = id;
         this.title = title;
         this.companyName = companyName;
         this.description = description;
         this.applyLink = applyLink;
-        this.city = city;
+        this.location = location;
         hasAllProperties(this);
         Object.freeze(this);
     }

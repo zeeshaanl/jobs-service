@@ -14,23 +14,23 @@
 <form id="postJobs" action="/postJobs" method="post">
     <div class='c-job-field'>
         <label for="title">Job Title</label>
-        <input type="text" id="title" name="title" />
+        <input required type="text" id="title" name="title" />
     </div>
     <div class='c-job-field'>
         <label for="companyName">Company Name</label>
-        <input type="text" id="companyName" name="companyName">
+        <input required type="text" id="companyName" name="companyName">
     </div>
     <div class='c-job-field'>
         <label for="description">Description</label>
-        <textarea id="description" name="description"></textarea>
+        <textarea required id="description" name="description"></textarea>
     </div>
     <div class='c-job-field'>
         <label for="applyLink">Apply Link</label>
-        <input id="applyLink" name="applyLink" />
+        <input required id="applyLink" name="applyLink" />
     </div>
     <div class='c-job-field'>
-        <label for="city">City</label>
-        <input id="city" name="city" />
+        <label for="location">Location</label>
+        <input required id="location" name="location" />
     </div>
     <div class='c-job-field__submit-container'>
         <button class='c-job-field__submit' type='submit'>Submit</button>

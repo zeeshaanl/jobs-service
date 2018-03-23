@@ -5,8 +5,8 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/postJobs', async (req, res) => {
-    const { title, companyName, description, applyLink, city } = req.body;
-    const job = new Job({ title, companyName, description, applyLink, city });
+    const { title, companyName, description, applyLink, location } = req.body;
+    const job = new Job({ title, companyName, description, applyLink, location });
     try {
         await appContainerInstance.saveCustomJobUseCase.invoke(job);
         res.sendStatus(200);

@@ -8,22 +8,22 @@ export default class Job {
      * @param {string} companyName
      * @param {string} description
      * @param {string} applyLink
-     * @param {string} city
+     * @param {string} location
      * @param {string=} tags
      */
-    constructor({ title, companyName, description, applyLink, city, tags }) {
-        this.id = Job.createJobHash(title, companyName, city);
+    constructor({ title, companyName, description, applyLink, location, tags }) {
+        this.id = Job.createJobHash(title, companyName, location);
         this.title = title;
         this.companyName = companyName;
         this.description = description;
         this.applyLink = applyLink;
-        this.city = city;
+        this.location = location;
         this.tags = tags;
         hasAllProperties(this, ['tags']);
         Object.freeze(this);
     }
 
-    static createJobHash(title, companyName, city) {
-        return crypto.createHash('md5').update(`${title}${companyName}${city}`).digest("hex");
+    static createJobHash(title, companyName, location) {
+        return crypto.createHash('md5').update(`${title}${companyName}${location}`).digest("hex");
     }
 }

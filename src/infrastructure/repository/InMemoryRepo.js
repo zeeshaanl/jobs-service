@@ -28,7 +28,7 @@ export default class InMemoryRepo extends JobsRepository {
         return InMemoryRepo.inMemoryVariable.filter(job =>
             (searchObject.jobTitle ? job.title === searchObject.jobTitle : true) &&
             (searchObject.companyName ? job.companyName === searchObject.companyName : true) &&
-            (searchObject.city ? job.city === searchObject.city : true)
+            (searchObject.location ? job.location === searchObject.location : true)
         )
     }
 }

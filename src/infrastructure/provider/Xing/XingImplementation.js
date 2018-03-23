@@ -40,7 +40,7 @@ export default class XingImplementation extends Provider {
                     companyName: freelancePosts.company_name[0],
                     description: freelancePosts.description[0],
                     applyLink: freelancePosts.url[0],
-                    city: freelancePosts.city[0],
+                    location: freelancePosts.city[0],
                     tags: freelancePosts.tags[0]
                 })
             );

@@ -44,7 +44,7 @@ export default class SequelizeRepo extends JobsRepository {
         const jobsFromDatabase = await this.sequelizeDatabaseObject.jobs.findAll({
             where: {
                 city: {
-                    [searchObject.city ? op.eq : op.ne]: searchObject.city || null
+                    [searchObject.location ? op.eq : op.ne]: searchObject.location || null
                 },
                 companyName: {
                     [searchObject.companyName ? op.eq : op.ne]: searchObject.companyName || null
@@ -70,14 +70,14 @@ export default class SequelizeRepo extends JobsRepository {
         });
 
         return jobsFromDatabase.map(job => {
-            const { id, title, companyName, description, applyLink, city } = job.dataValues;
+            const { id, title, companyName, description, applyLink, location } = job.dataValues;
             return new JobViewModel({
                 id,
                 title,
                 companyName,
                 description,
                 applyLink,
-                city
+                location
             })
         });
     }

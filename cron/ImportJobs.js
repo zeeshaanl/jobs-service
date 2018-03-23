@@ -10,7 +10,7 @@ Then pass the Array to the UseCase that loops through each one and calls import 
 */
 
 try {
-    const apiService = new ApiService;
+    const apiService = new ApiServiceFilesystemMock;
     // apiService.getRawJsonJobs();
     const xingImplementation = new XingImplementation(apiService);
     appContainerInstance.importJobsUseCase.invoke(xingImplementation);

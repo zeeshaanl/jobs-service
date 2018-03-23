@@ -38,7 +38,7 @@ export default class ElasticSearch extends JobsRepository {
      * @return {Promise<Array.<Job>>}
      */
     async searchForJobs(searchObject) {
-        const { jobTitle, city } = searchObject;
+        const { jobTitle, location } = searchObject;
         const elasticSearchJobs = await this.client.search({
             index: 'jobs, customjobs',
             type: 'string',
@@ -54,8 +54,8 @@ export default class ElasticSearch extends JobsRepository {
                         },
                         filter: {
                             "match": {
-                                "city": {
-                                    "query": city,
+                                "location": {
+                                    "query": location,
                                     "fuzziness": "AUTO"
                                 }
                             }
@@ -69,14 +69,14 @@ export default class ElasticSearch extends JobsRepository {
 
         return hits.map(job => {
             const { _id: id, _source } = job;
-            const { title, companyName, description, applyLink, city } = _source;
+            const { title, companyName, description, applyLink, location } = _source;
             return new JobViewModel({
                 id,
                 title,
                 companyName,
                 description,
                 applyLink,
-                city
+                location
             })
         });
     }

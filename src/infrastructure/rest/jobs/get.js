@@ -6,21 +6,21 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/jobs', async (req, res) => {
-    const { jobTitle, city } = req.query;
-    if (!jobTitle && !city) {
-        res.status(422).send("Missing params: jobTitle and city");
+    const { jobTitle, location } = req.query;
+    if (!jobTitle && !location) {
+        res.status(422).send("Missing params: jobTitle and location");
     }
     else if (!jobTitle) {
         res.status(422).send("Missing param: jobTitle");
     }
-    else if (!city) {
-        res.status(422).send("Missing param: city");
+    else if (!location) {
+        res.status(422).send("Missing param: location");
     }
     else {
         try {
             const searchObject = new SearchObject({
                 jobTitle,
-                city
+                location
             });
             const jobs = await appContainerInstance.findJobsUseCase.invoke(searchObject);
             if (!jobs || !jobs.length) {
