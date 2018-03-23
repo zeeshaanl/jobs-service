@@ -4,7 +4,7 @@ const https = require('follow-redirects').https;
 const zlib = require('zlib');
 const gunzip = zlib.createGunzip();
 
-export default class ApiService {
+export default class XingApiService {
     async getRawJsonJobs() {
         return (
             new Promise(resolve => {

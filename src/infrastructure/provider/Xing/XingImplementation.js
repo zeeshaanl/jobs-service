@@ -14,12 +14,12 @@ export default class XingImplementation extends Provider {
     /**
      * @method
      * @name importJobs
-     * @returns {Array.<Job>}
+     * @returns {Promise<Array<Job>>}
      *
      */
     async importJobs() {
         const rawJsonJobs = await this.apiService.getRawJsonJobs();
-        return this.mapReponseToJobs(rawJsonJobs);
+        return this.mapResponseToJobs(rawJsonJobs);
     }
 
     /**
@@ -27,7 +27,7 @@ export default class XingImplementation extends Provider {
      * @param rawJobs
      * @returns {Array.<Job>}
      */
-    mapReponseToJobs(rawJobs) {
+    mapResponseToJobs(rawJobs) {
         try {
             console.log('in json response to jobs');
             const { postings } = rawJobs.jobs;

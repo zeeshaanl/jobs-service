@@ -1,6 +1,6 @@
 import XingImplementation from '../../../src/infrastructure/provider/Xing/XingImplementation';
 import Job from '../../../src/domain/entity/Job';
-import ApiServiceFilesystemMock from '../../unit/mock/ApiServiceFilesystemMock';
+import ApiServiceFilesystemMock from '../../unit/mock/XingApiServiceFilesystemMock';
 
 test('Test Xing Import job mapping', async () => {
     try {

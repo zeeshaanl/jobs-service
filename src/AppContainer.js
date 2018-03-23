@@ -14,6 +14,7 @@ class AppContainer {
         const elasticSearchRepo = new ElasticSearch();
 
         this.importJobsUseCase = new ImportJobsUseCase(elasticSearchRepo);
+
         this.findJobsUseCase = new FindJobsUseCase(elasticSearchRepo);
         this.saveCustomJobUseCase = new SaveCustomJob(elasticSearchRepo);
     }

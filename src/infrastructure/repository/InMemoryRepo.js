@@ -5,7 +5,7 @@ import { JobsRepository } from '../../domain/repository/JobsRepository';
  */
 export default class InMemoryRepo extends JobsRepository {
 
-    static inMemoryVariable;
+    static inMemoryVariable = [];
 
     constructor() {
         super();
@@ -16,7 +16,9 @@ export default class InMemoryRepo extends JobsRepository {
      * @param {Array.<Job>} jobs
      */
     saveJobs(jobs) {
-        InMemoryRepo.inMemoryVariable = jobs;
+        jobs.forEach(job => {
+            InMemoryRepo.inMemoryVariable[Math.random()] = job;
+        });
     }
 
     /**

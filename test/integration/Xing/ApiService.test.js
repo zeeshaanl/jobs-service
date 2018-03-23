@@ -1,4 +1,4 @@
-import ApiService from '../../../src/infrastructure/provider/Xing/ApiService';
+import ApiService from '../../../src/infrastructure/provider/Xing/XingApiService';
 
 test('Get Jobs from Xing', async () => {
     try {

@@ -1,19 +1,22 @@
 import appContainerInstance from '../src/AppContainer';
-import ApiServiceFilesystemMock from '../test/unit/mock/ApiServiceFilesystemMock';
+import XingApiServiceFilesystemMock from '../test/unit/mock/XingApiServiceFilesystemMock';
 import XingImplementation from '../src/infrastructure/provider/Xing/XingImplementation';
-import ApiService from '../src/infrastructure/provider/Xing/ApiService';
-
-/*
-When multiple providers exist store the implementations in an array like this:
-const providers = [xingImplementation, indeedImplementation]
-Then pass the Array to the UseCase that loops through each one and calls import jobs and saves to repo
-*/
+import XingApiService from '../src/infrastructure/provider/Xing/XingApiService';
+import WorkingNomadsApiServiceFilesystemMock from '../test/unit/mock/WorkingNomadsApiServiceFilesystemMock';
+import WorkingNomadsImplementation from '../src/infrastructure/provider/WorkingNomads/WorkingNomadsImplementation';
 
 try {
-    const apiService = new ApiServiceFilesystemMock;
+    const xingApiService = new XingApiServiceFilesystemMock;
     // apiService.getRawJsonJobs();
-    const xingImplementation = new XingImplementation(apiService);
-    appContainerInstance.importJobsUseCase.invoke(xingImplementation);
+    const xingImplementation = new XingImplementation(xingApiService);
+
+    const workingNomadsApiService = new WorkingNomadsApiServiceFilesystemMock;
+    const workingNomadsImplementation = new WorkingNomadsImplementation(workingNomadsApiService);
+
+    const providers = [xingImplementation, workingNomadsImplementation];
+
+    appContainerInstance.importJobsUseCase.invoke(providers);
+
 } catch (e) {
     console.log(e, 'ERROR IN CRON');
 }

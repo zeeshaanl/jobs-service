@@ -10,11 +10,13 @@ export default class ImportJobsUseCase {
 
     /**
      *
-     * @param {Provider} provider
+     * @param {Array<Provider>} providers
      * @returns void
      */
-    async invoke(provider) {
-        const jobs = await provider.importJobs();
-        this.jobsRepository.saveJobs(jobs);
+    async invoke(providers) {
+        await Promise.all(providers.map(async provider => {
+            const jobs = await provider.importJobs();
+            this.jobsRepository.saveJobs(jobs);
+        }))
     }
 }
