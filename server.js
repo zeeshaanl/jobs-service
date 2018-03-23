@@ -1,14 +1,15 @@
 require('dotenv').config();
 import express from 'express';
-import logger from 'morgan';
+import morgan from 'morgan';
 import cors from 'cors';
+import logger from './src/lib/logger';
 
 import routes from './src/infrastructure/rest/routes'
 
 const app = express();
 
 app.use(cors());
-app.use(logger('dev'));
+app.use(morgan('combined', { stream: logger.stream }));
 app.use(express.json());
 app.use(express.urlencoded());
 app.set('view engine', 'ejs');

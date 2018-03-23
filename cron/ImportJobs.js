@@ -6,7 +6,7 @@ import WorkingNomadsApiServiceFilesystemMock from '../test/unit/mock/WorkingNoma
 import WorkingNomadsImplementation from '../src/infrastructure/provider/WorkingNomads/WorkingNomadsImplementation';
 
 try {
-    const xingApiService = new XingApiServiceFilesystemMock;
+    const xingApiService = new XingApiService;
     // apiService.getRawJsonJobs();
     const xingImplementation = new XingImplementation(xingApiService);
 

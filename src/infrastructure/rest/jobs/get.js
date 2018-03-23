@@ -1,6 +1,7 @@
 import SearchObject from '../../../domain/searchObject/SearchObject';
 import appContainerInstance from '../../../AppContainer';
 import authenticate from '../basicAuth/authenticate';
+import logger from '../../../lib/logger';
 
 const express = require('express');
 const router = express.Router();
@@ -28,7 +29,8 @@ router.get('/jobs', async (req, res) => {
             } else {
                 res.json(jobs);
             }
-        } catch (e) {
+        } catch (error) {
+            logger.error(`${error.status || 500} - ${error.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
             res.status(500).send("There was an error finding jobs.");
         }
     }
