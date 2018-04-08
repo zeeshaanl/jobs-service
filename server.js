@@ -20,4 +20,6 @@ app.use("/public", express.static(__dirname + '/src/infrastructure/web/public'))
 // app.use(express.static(__dirname + '/src/infrastructure/web/public'));
 app.use(routes);
 
-app.listen(4444, () => console.log('listening on port 4444'));
+const port = 4444;
+
+app.listen(port, () => console.log(`Listening on port ${port}`));

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --verbose --exec \"babel-node\" server.js",
-    "live-start": "babel-node server.js",
+    "dev-start": "NODE_ENV=development nodemon --verbose --exec \"babel-node\" server.js",
+    "start": "NODE_ENV=production babel-node server.js",
     "import-jobs": "nodemon --verbose --exec \"babel-node\" --max-old-space-size=32000 cron/ImportJobs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,17 +20,18 @@
     "jest": "^22.1.4",
     "morgan": "^1.9.0",
     "mysql2": "^1.5.2",
+    "raven": "^2.4.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "sequelize": "^4.32.3",
-    "winston": "^3.0.0-rc3",
+    "sequelize": "^4.37.6",
+    "winston": "^3.0.0-rc4",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
-    "dotenv": "^5.0.0",
-    "nodemon": "^1.14.11"
+    "dotenv": "^5.0.1",
+    "nodemon": "^1.17.3"
   }
 }

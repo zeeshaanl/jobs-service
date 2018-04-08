@@ -18,10 +18,12 @@ export default class ElasticSearch extends JobsRepository {
      * @param {Array.<Job>} jobs
      * @returns void
      */
-    saveJobs(jobs) {
-        jobs.forEach(job => {
-            this.handleJobSave(job, 'jobs');
-        });
+    async saveJobs(jobs) {
+        for (const job of jobs) {
+            await this.handleJobSave(job, 'jobs');
+            console.log('job saved');
+        }
+        console.log('done');
     }
 
     /**

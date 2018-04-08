@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "name": "jobi",
+      "script": "npm",
+      "args": "start",
+      "instances": "max",
+      "exec_mode": "cluster"
+    }
+  ]
+}
