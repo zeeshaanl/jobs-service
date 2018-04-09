@@ -7,3 +7,5 @@ coverage/
 i18n
 !i18n/.gitkeep
 test/unit/mock/postings.xml
+dist/
+logs/
