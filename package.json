@@ -5,9 +5,13 @@
   "main": "index.js",
   "scripts": {
     "dev-start": "NODE_ENV=development nodemon --verbose --exec \"babel-node\" server.js",
-    "build": "rimraf dist && babel src --out-dir dist/src --copy-files && cp package.json dist/ && cp process.json dist/ && cp .env dist/ && cd dist && mkdir logs",
-    "start": "NODE_ENV=production babel-node src/server.js",
-    "import-jobs": "nodemon --verbose --exec \"babel-node\" --max-old-space-size=32000 cron/ImportJobs.js",
+    "dev-import-jobs": "nodemon --verbose --exec \"babel-node\" --max-old-space-size=32000 cron/ImportJobs.js",
+    "prebuild": "rimraf dist && mkdir dist && cp -r package.json process.json .babelrc ./dist",
+    "build": "babel src -d dist/src --copy-files && babel cron -d dist/cron --copy-files && cd dist && npm --production install",
+    "postbuild": "cd dist && zip -rm jobs-service .",
+    "deploy": "npm run deploy && ",
+    "start": "node src/server.js",
+    "import-jobs": "node --max-old-space-size=32000 cron/ImportJobs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -18,22 +22,22 @@
     "elasticsearch": "^14.1.0",
     "express": "^4.16.2",
     "follow-redirects": "^1.4.1",
-    "jest": "^22.1.4",
-    "morgan": "^1.9.0",
     "mysql2": "^1.5.2",
     "raven": "^2.4.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "rimraf": "^2.6.2",
     "sequelize": "^4.37.6",
     "winston": "^3.0.0-rc4",
-    "xml2js": "^0.4.19"
+    "xml2js": "^0.4.19",
+    "dotenv": "^5.0.1",
+    "morgan": "^1.9.0"
   },
   "devDependencies": {
+    "jest": "^22.1.4",
+    "rimraf": "^2.6.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
-    "dotenv": "^5.0.1",
     "nodemon": "^1.17.3"
   }
 }
