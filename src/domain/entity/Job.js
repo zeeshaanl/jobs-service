@@ -19,6 +19,7 @@ export default class Job {
         this.applyLink = applyLink;
         this.location = location;
         this.tags = tags;
+        this.createdDate = new Date();
         hasAllProperties(this, ['tags']);
         Object.freeze(this);
     }

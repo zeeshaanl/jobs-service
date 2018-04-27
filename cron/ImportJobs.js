@@ -1,6 +1,6 @@
 import raven from 'raven';
 import appContainerInstance from '../src/AppContainer';
-import XingApiServiceFilesystemMock from '../test/unit/mock/XingApiServiceFilesystemMock';
+// import XingApiServiceFilesystemMock from '../test/unit/mock/XingApiServiceFilesystemMock';
 import XingImplementation from '../src/infrastructure/provider/Xing/XingImplementation';
 import XingApiService from '../src/infrastructure/provider/Xing/XingApiService';
 // import WorkingNomadsApiServiceFilesystemMock from '../test/unit/mock/WorkingNomadsApiServiceFilesystemMock';
