@@ -18,8 +18,12 @@ export default class XingImplementation extends Provider {
      *
      */
     async importJobs() {
-        const rawJsonJobs = await this.apiService.getRawJsonJobs();
-        return this.mapResponseToJobs(rawJsonJobs);
+        try {
+            const rawJsonJobs = await this.apiService.getRawJsonJobs();
+            return this.mapResponseToJobs(rawJsonJobs);
+        } catch (e) {
+            throw new Error(`Error receiving and mapping Xing Jobs. Error Object: ${JSON.stringify(e)}`)
+        }
     }
 
     /**
@@ -29,7 +33,6 @@ export default class XingImplementation extends Provider {
      */
     mapResponseToJobs(rawJobs) {
         try {
-            console.log('in json response to jobs');
             const { postings } = rawJobs.jobs;
             const { posting: postingArray } = postings[0];
             return postingArray.filter(singlePost =>

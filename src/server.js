@@ -22,4 +22,4 @@ app.use(routes);
 
 const port = 4444;
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Server listening on port ${port}`));

@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist && mkdir dist && cp -r package.json process.json .babelrc ./dist",
     "build": "babel src -d dist/src --copy-files && babel cron -d dist/cron --copy-files && cd dist && npm --production install",
     "postbuild": "cd dist && zip -rm jobs-service .",
-    "deploy": "npm run deploy && ",
+    "deploy": "npm run build && bash scripts/deploy.sh",
     "start": "node src/server.js",
     "import-jobs": "node --max-old-space-size=32000 cron/ImportJobs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,19 +18,19 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "ejs": "^2.5.7",
     "elasticsearch": "^14.1.0",
     "express": "^4.16.2",
     "follow-redirects": "^1.4.1",
+    "morgan": "^1.9.0",
     "mysql2": "^1.5.2",
     "raven": "^2.4.2",
-    "request": "^2.83.0",
+    "request": "^2.85.0",
     "request-promise": "^4.2.2",
     "sequelize": "^4.37.6",
     "winston": "^3.0.0-rc4",
-    "xml2js": "^0.4.19",
-    "dotenv": "^5.0.1",
-    "morgan": "^1.9.0"
+    "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "jest": "^22.1.4",
