@@ -4,4 +4,5 @@ echo "File uploaded"
 ssh root@138.68.110.30 'bash -s' << EOF
     unzip -o jobs-service.zip -d jobs-service
     rm -rf jobs-service.zip
+    pm2 reload
 EOF
