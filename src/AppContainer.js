@@ -20,6 +20,10 @@ class AppContainer {
         this.saveCustomJobUseCase = new SaveCustomJob(elasticSearchRepo);
 
         this.loggerInstance = new Logger();
+
+        process.on('unhandledRejection', (reason, promise) => {
+            this.loggerInstance.logger.error(`Unhandled Rejection caught! Promise: ${promise} | Reason: ${reason.stack || reason}`);
+        });
     }
 }
 

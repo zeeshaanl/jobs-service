@@ -7,9 +7,9 @@ import XingApiService from '../src/infrastructure/provider/Xing/XingApiService';
 import WorkingNomadsImplementation from '../src/infrastructure/provider/WorkingNomads/WorkingNomadsImplementation';
 import WorkingNomadsApiService from '../src/infrastructure/provider/WorkingNomads/WorkingNomadsApiService';
 
-raven.config(process.env.SENTRY_URL).install();
-
 const { loggerInstance, importJobsUseCase } = appContainerInstance;
+
+raven.config(process.env.SENTRY_URL).install();
 
 try {
     const xingApiService = new XingApiService;
