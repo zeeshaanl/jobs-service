@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev-start": "NODE_ENV=development nodemon --verbose --exec \"babel-node\" server.js",
+    "dev-start": "NODE_ENV=development nodemon --verbose --exec \"babel-node\" src/server.js",
     "dev-import-jobs": "nodemon --verbose --exec \"babel-node\" --max-old-space-size=32000 cron/ImportJobs.js",
     "prebuild": "rimraf dist && mkdir dist && cp -r package.json process.json .babelrc ./dist",
     "build": "babel src -d dist/src --copy-files && babel cron -d dist/cron --copy-files && cd dist && npm --production install",
@@ -29,7 +29,8 @@
     "request": "^2.85.0",
     "request-promise": "^4.2.2",
     "sequelize": "^4.37.6",
-    "winston": "^3.0.0-rc4",
+    "winston": "^2.4.2",
+    "winston-loggly-bulk": "^2.0.2",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {

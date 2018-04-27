@@ -5,6 +5,7 @@ import ImportJobsUseCase from './application/usecase/ImportJobsUseCase';
 import SequelizeDatabaseObject from './infrastructure/repository/database/SequelizeDatabaseInit';
 import ElasticSearch from './infrastructure/repository/ElasticSearch';
 import SaveCustomJob from './application/usecase/SaveCustomJob';
+import Logger from './lib/Logger';
 
 class AppContainer {
     constructor() {
@@ -17,6 +18,8 @@ class AppContainer {
 
         this.findJobsUseCase = new FindJobsUseCase(elasticSearchRepo);
         this.saveCustomJobUseCase = new SaveCustomJob(elasticSearchRepo);
+
+        this.loggerInstance = new Logger();
     }
 }
 
