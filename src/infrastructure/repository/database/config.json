@@ -1,0 +1,30 @@
+{
+  "defaultEnv": "with-database",
+  "with-database": {
+    "driver": "pg",
+    "host": {
+      "ENV": "PG_DB_HOST"
+    },
+    "user": {
+      "ENV": "PG_DB_USERNAME"
+    },
+    "password": {
+      "ENV": "PG_DB_PASSWORD"
+    },
+    "database": {
+      "ENV": "PG_DB_SCHEMA"
+    }
+  },
+  "without-database": {
+    "driver": "pg",
+    "host": {
+      "ENV": "PG_DB_HOST"
+    },
+    "user": {
+      "ENV": "PG_DB_USERNAME"
+    },
+    "password": {
+      "ENV": "PG_DB_PASSWORD"
+    }
+  }
+}

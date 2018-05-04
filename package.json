@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db:create": "db-migrate db:create --config ./src/infrastructure/repository/database/config.json --env without-database",
+    "db:migration:create": "db-migrate create --config ./src/infrastructure/repository/database/config.json --migrations-dir ./src/infrastructure/repository/database/migrations",
+    "db:migration:up": "db-migrate up --config ./src/infrastructure/repository/database/config.json --migrations-dir ./src/infrastructure/repository/database/migrations",
+    "db:migration:down": "db-migrate down --config ./src/infrastructure/repository/database/config.json --migrations-dir ./src/infrastructure/repository/database/migrations",
+    "db:migration:reset": "db-migrate reset --config ./src/infrastructure/repository/database/config.json --migrations-dir ./src/infrastructure/repository/database/migrations",
     "dev-start": "NODE_ENV=development nodemon --verbose --exec \"babel-node\" src/server.js",
     "dev-import-jobs": "nodemon --verbose --exec \"babel-node\" --max-old-space-size=32000 cron/ImportJobs.js",
     "prebuild": "rimraf dist && mkdir dist && cp -r package.json process.json .babelrc ./dist",
@@ -18,6 +23,8 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.4",
+    "db-migrate": "^0.11.1",
+    "db-migrate-pg": "^0.4.0",
     "dotenv": "^5.0.1",
     "ejs": "^2.5.7",
     "elasticsearch": "^14.1.0",
