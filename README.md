@@ -1,2 +1,2 @@
-Service to collect job postings from various provider and to provide API routes to get them. <br />
+Service that compiles job postings from various providers and provides API routes to get them. <br />
 Built following the principles of Clean Architecture and DDD
