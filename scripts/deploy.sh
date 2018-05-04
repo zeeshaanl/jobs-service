@@ -4,11 +4,8 @@ echo "File uploaded"
 ssh root@138.68.110.30 'bash -s' << EOF
     unzip -o jobs-service.zip -d jobs-service
     rm -rf jobs-service.zip
-EOF
-
-'
-
-    npm run db:create $DATABASE_SCHEMA
+    . /root/.nvm/nvm.sh
+    cd jobs-service
+    npm run db:create jobi
     npm run db:migration:up
-    should be added after unzipping
-'
+EOF
