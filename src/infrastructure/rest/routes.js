@@ -1,11 +1,13 @@
 import getJobs from './jobs/get';
 import postJobs from './jobs/post';
+import postUser from './users/post';
 
 const express = require('express');
 const router = express.Router();
 
 router.use(getJobs);
 router.use(postJobs);
+router.use(postUser);
 
 router.use((req, res) => {
     res.status(404).send('This route does not exist :)');
