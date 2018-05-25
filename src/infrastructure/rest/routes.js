@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.use(getJobs);
 router.use(postJobs);
+
 router.use(postUser);
 
 router.use((req, res) => {
