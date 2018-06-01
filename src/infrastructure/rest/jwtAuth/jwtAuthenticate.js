@@ -1,15 +1,17 @@
 import firebaseAdminInstance from '../../firebase/init';
 
 const jwtAuthenticate = async (req, res, next) => {
-    const token = req.headers['x-access-token'];
+    const authHeader = req.headers['authorization'];
 
-    if (!token) {
+    if (!authHeader) {
         return res.status(401).send({ auth: false, message: 'No token provided.' });
     }
 
     try {
-        req.body.uid = await firebaseAdminInstance.verifyIdToken(token);
+        const authToken = authHeader.split(' ')[1]; // Split on a space, the original auth looks like  "Bearer Y2hhcmxlczoxMjM0NQ==" and we need the 2nd part
+        req.body.uid = await firebaseAdminInstance.verifyIdToken(authToken);
     } catch (e) {
+        console.log(e, 'error');
         return res.status(401).send({ auth: false, message: e });
     }
 
