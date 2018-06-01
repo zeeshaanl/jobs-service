@@ -5,11 +5,12 @@
 export class FavouriteJobsRepository {
     /**
      *
-     * @param {string} uid
+     * @param {string} userId
      * @param {string} jobId
+     * @returns {Promise<void>}
      *
      */
-    addFavouriteJob(uid, jobId) {
+    addFavouriteJobToUser(userId, jobId) {
         throw new Error('Not implemented yet');
     }
 }
