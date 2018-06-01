@@ -7,15 +7,15 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/createUser', jwtAuthenticate, async (req, res) => {
-    const { uid, firstName, lastName, email, telephone } = req.body;
-
-    console.log(req.body, 'req body!');
-
-    const user = new User({ uid, firstName, lastName, email, telephone });
-    console.log(user);
-
     try {
-        // await appContainerInstance.createUserUseCase.invoke(user);
+        const { id, firstName, lastName, email, telephone } = req.body;
+
+        console.log(req.body, 'req body!');
+
+        const user = new User({ id, firstName, lastName, email, telephone });
+        console.log(user);
+        const usercreateobject = await appContainerInstance.userSignupUseCase.invoke(user);
+        console.log(usercreateobject, 'userfbetarobject');
         res.sendStatus(200);
     } catch (e) {
         res.status(500).send(`Something went wrong, user not created. Error: ${e}`);

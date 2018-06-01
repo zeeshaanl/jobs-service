@@ -1,19 +1,17 @@
-const jwtAuthenticate = (req, res, next) => {
+import firebaseAdminInstance from '../../firebase/init';
+
+const jwtAuthenticate = async (req, res, next) => {
     const token = req.headers['x-access-token'];
 
     if (!token) {
         return res.status(401).send({ auth: false, message: 'No token provided.' });
     }
 
-    // admin.auth().verifyIdToken(idToken)
-    //     .then(function (decodedToken) {
-    //         var uid = decodedToken.uid;
-    //         // ...
-    //     }).catch(function (error) {
-    //     // Handle error
-    // });
-
-    req.body.uid = 123;
+    try {
+        req.body.uid = await firebaseAdminInstance.verifyIdToken(token);
+    } catch (e) {
+        return res.status(401).send({ auth: false, message: e });
+    }
 
     return next();
 };

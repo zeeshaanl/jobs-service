@@ -1,11 +1,12 @@
 import 'dotenv/config';
 import FindJobsUseCase from './application/usecase/FindJobsUseCase';
-import SequelizeRepo from './infrastructure/repository/SequelizeRepo';
+import SequelizeRepo from './infrastructure/repository/UserRepoImpl';
 import ImportJobsUseCase from './application/usecase/ImportJobsUseCase';
 import SequelizeDatabaseObject from './infrastructure/repository/database/SequelizeDatabaseInit';
 import ElasticSearch from './infrastructure/repository/ElasticSearch';
 import SaveCustomJob from './application/usecase/SaveCustomJob';
 import Logger from './lib/Logger';
+import UserSignup from './application/usecase/UserSignup';
 
 class AppContainer {
     constructor() {
@@ -18,6 +19,8 @@ class AppContainer {
 
         this.findJobsUseCase = new FindJobsUseCase(elasticSearchRepo);
         this.saveCustomJobUseCase = new SaveCustomJob(elasticSearchRepo);
+
+        this.userSignupUseCase = new UserSignup(sequelizeRepo);
 
         this.loggerInstance = new Logger();
 

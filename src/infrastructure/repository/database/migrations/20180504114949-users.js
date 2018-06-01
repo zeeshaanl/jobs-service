@@ -16,12 +16,12 @@ exports.setup = function (options, seedLink) {
 
 exports.up = function (db) {
     const promises = [];
-    promises.push(db.createTable('Users', {
+    promises.push(db.createTable('users', {
         columns: {
             id: {
                 type: 'string',
-                length: '64',
-                notNull: true
+                notNull: true,
+                primaryKey: true
             },
             firstName: {
                 type: 'string',
@@ -46,7 +46,7 @@ exports.up = function (db) {
 exports.down = function (db) {
     var promises = [];
 
-    promises.push(db.dropTable('Users'));
+    promises.push(db.dropTable('users'));
 
     return Promise.all(promises);
 };

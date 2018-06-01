@@ -9,3 +9,4 @@ i18n
 test/unit/mock/postings.xml
 dist/
 logs/
+serviceAccountKey.json

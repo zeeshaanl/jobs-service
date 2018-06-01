@@ -3,54 +3,12 @@ const Op = Sequelize.Op;
 
 export default class SequelizeDatabaseInit {
     constructor() {
-        const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-            host: process.env.DB_HOST,
-            dialect: 'mysql',
+        this.sequelizeInstance = new Sequelize(process.env.PG_DB_SCHEMA, process.env.PG_DB_USERNAME, process.env.PG_DB_PASSWORD, {
+            host: process.env.PG_DB_HOST,
+            dialect: 'postgres',
             operatorsAliases: Op
-        });
-
-        this.jobs = sequelize.define('jobs', {
-            id: { type: Sequelize.INTEGER, primaryKey: true },
-            title: {
-                type: Sequelize.STRING
-            },
-            companyName: {
-                type: Sequelize.STRING
-            },
-            description: {
-                type: Sequelize.STRING
-            },
-            applyLink: {
-                type: Sequelize.STRING
-            },
-            city: {
-                type: Sequelize.STRING
-            },
-            tags: {
-                type: Sequelize.STRING
-            }
-        }, {
-            timestamps: false
         });
         this.op = Op;
         this.sequelize = Sequelize;
     }
 }
-
-// Jobs
-//     .create({ id: 124, name: 'Bob Doe', title: 'junior engineer' })
-//     .then(employee => {
-//         console.log(employee.get('name')); // John Doe (SENIOR ENGINEER)
-//         console.log(employee.get('title')); // SENIOR ENGINEER
-//     });
-//
-// console.log(Jobs);
-//
-// sequelize
-//     .authenticate()
-//     .then(() => {
-//         console.log('Connection has been established successfully.');
-//     })
-//     .catch(err => {
-//         console.error('Unable to connect to the database:', err);
-//     });
