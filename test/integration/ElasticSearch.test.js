@@ -1,4 +1,4 @@
-import ElasticSearch from '../../src/infrastructure/repository/ElasticSearch';
+import ElasticSearch from '../../src/infrastructure/repository/ElasticSearchJobsRepository';
 import SearchObject from '../../src/domain/searchObject/SearchObject';
 import JobViewModel from '../../src/infrastructure/viewModel/JobViewModel';
 

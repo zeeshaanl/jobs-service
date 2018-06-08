@@ -1,26 +1,26 @@
 import 'dotenv/config';
 import FindJobsUseCase from './application/usecase/FindJobsUseCase';
-import SequelizeRepo from './infrastructure/repository/UserRepoImpl';
+import SequelizeUserRepository from './infrastructure/repository/SequelizeUserRepository';
 import ImportJobsUseCase from './application/usecase/ImportJobsUseCase';
-import SequelizeDatabaseObject from './infrastructure/repository/database/SequelizeDatabaseInit';
-import ElasticSearch from './infrastructure/repository/ElasticSearch';
+import SequelizePostgresDatabaseInit from './infrastructure/repository/database/SequelizePostgresDatabaseInit';
+import ElasticSearchJobsRepository from './infrastructure/repository/ElasticSearchJobsRepository';
 import SaveCustomJob from './application/usecase/SaveCustomJob';
 import Logger from './lib/Logger';
 import UserSignup from './application/usecase/UserSignup';
 
 class AppContainer {
     constructor() {
-        const sequelizeDatabaseObject = new SequelizeDatabaseObject();
-        const sequelizeRepo = new SequelizeRepo(sequelizeDatabaseObject);
+        const SequelizePostgresDatabaseObject = new SequelizePostgresDatabaseInit();
+        const sequelizeUserRepository = new SequelizeUserRepository(SequelizePostgresDatabaseObject);
 
-        const elasticSearchRepo = new ElasticSearch();
+        const elasticSearchJobsRepository = new ElasticSearchJobsRepository();
 
-        this.importJobsUseCase = new ImportJobsUseCase(elasticSearchRepo);
+        this.importJobsUseCase = new ImportJobsUseCase(elasticSearchJobsRepository);
 
-        this.findJobsUseCase = new FindJobsUseCase(elasticSearchRepo);
-        this.saveCustomJobUseCase = new SaveCustomJob(elasticSearchRepo);
+        this.findJobsUseCase = new FindJobsUseCase(elasticSearchJobsRepository);
+        this.saveCustomJobUseCase = new SaveCustomJob(elasticSearchJobsRepository);
 
-        this.userSignupUseCase = new UserSignup(sequelizeRepo);
+        this.userSignupUseCase = new UserSignup(sequelizeUserRepository);
 
         this.loggerInstance = new Logger();
 

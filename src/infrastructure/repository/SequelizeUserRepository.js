@@ -6,7 +6,7 @@ import { UserRepository } from '../../domain/repository/UserRepository';
 /**
  * @implements {UserRepository}
  */
-export default class UserRepoImpl extends UserRepository {
+export default class SequelizeUserRepository extends UserRepository {
     /**
      *
      * @param sequelizeDatabaseObject

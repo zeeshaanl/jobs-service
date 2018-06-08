@@ -1,4 +1,4 @@
-import ElasticSearch from '../../../src/infrastructure/repository/ElasticSearch';
+import ElasticSearch from '../../../src/infrastructure/repository/ElasticSearchJobsRepository';
 
 test('Test Save Job to Elastic Search', async () => {
     try {

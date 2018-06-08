@@ -3,7 +3,7 @@ import { FavouriteJobsRepository } from '../../domain/repository/FavouriteJobsRe
 /**
  * @implements {FavouriteJobsRepository}
  */
-export default class FavouriteJobsRepoImpl extends FavouriteJobsRepository {
+export default class SequelizeFavouriteJobsRepository extends FavouriteJobsRepository {
     /**
      *
      * @param sequelizeDatabaseObject

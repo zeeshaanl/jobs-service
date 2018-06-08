@@ -5,7 +5,7 @@ import JobViewModel from '../viewModel/JobViewModel';
 /**
  * @implements {JobsRepository}
  */
-export default class ElasticSearch extends JobsRepository {
+export default class ElasticSearchJobsRepository extends JobsRepository {
     constructor() {
         super();
         this.client = new elasticsearch.Client({
