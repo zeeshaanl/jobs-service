@@ -27,12 +27,11 @@ export default class SequelizeFavouriteJobsRepository extends FavouriteJobsRepos
 
     /**
      *
-     * @param {string} userId
-     * @param {string} jobId
+     * @param {FavouriteJob} favouriteJob
      * @returns {Promise<void>}
      *
      */
-    addFavouriteJobToUser(userId, jobId) {
+    addFavouriteJobToUser(favouriteJob) {
 
     }
 }
