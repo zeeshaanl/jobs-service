@@ -25,6 +25,7 @@ export default class Job {
     }
 
     static createJobHash(title, companyName, location) {
+        // TODO take only first 8 chars
         return crypto.createHash('md5').update(`${title}${companyName}${location}`).digest("hex");
     }
 }

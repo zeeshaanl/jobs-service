@@ -1,8 +1,8 @@
 import SearchObject from '../../../domain/searchObject/SearchObject';
 import appContainerInstance from '../../../AppContainer';
 import authenticate from '../basicAuth/authenticate';
+import express from 'express';
 
-const express = require('express');
 const router = express.Router();
 
 const { loggerInstance } = appContainerInstance;

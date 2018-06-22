@@ -2,17 +2,17 @@ import Job from '../../../domain/entity/Job';
 import appContainerInstance from '../../../AppContainer';
 import User from '../../../domain/entity/User';
 import jwtAuthenticate from '../jwtAuth/jwtAuthenticate';
+import express from 'express';
 
-const express = require('express');
 const router = express.Router();
 
 router.post('/createUser', jwtAuthenticate, async (req, res) => {
     try {
-        const { id, firstName, lastName, email, telephone } = req.body;
+        const { userId, firstName, lastName, email, telephone } = req.body;
 
         console.log(req.body, 'req body!');
 
-        const user = new User({ id, firstName, lastName, email, telephone });
+        const user = new User({ id: userId, firstName, lastName, email, telephone });
         console.log(user);
         const usercreateobject = await appContainerInstance.userSignupUseCase.invoke(user);
         console.log(usercreateobject, 'userfbetarobject');

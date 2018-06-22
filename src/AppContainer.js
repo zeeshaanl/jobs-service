@@ -7,11 +7,14 @@ import ElasticSearchJobsRepository from './infrastructure/repository/ElasticSear
 import SaveCustomJob from './application/usecase/SaveCustomJob';
 import Logger from './lib/Logger';
 import UserSignup from './application/usecase/UserSignup';
+import AddJobToFavouritesUseCase from './application/usecase/AddJobToFavouritesUseCase';
+import SequelizeFavouriteJobsRepository from './infrastructure/repository/SequelizeFavouriteJobsRepository';
 
 class AppContainer {
     constructor() {
         const SequelizePostgresDatabaseObject = new SequelizePostgresDatabaseInit();
         const sequelizeUserRepository = new SequelizeUserRepository(SequelizePostgresDatabaseObject);
+        const sequelizeFavouriteJobsRepository = new SequelizeFavouriteJobsRepository(SequelizePostgresDatabaseObject);
 
         const elasticSearchJobsRepository = new ElasticSearchJobsRepository();
 
@@ -21,6 +24,8 @@ class AppContainer {
         this.saveCustomJobUseCase = new SaveCustomJob(elasticSearchJobsRepository);
 
         this.userSignupUseCase = new UserSignup(sequelizeUserRepository);
+
+        this.addJobToFavouritesUseCase = new AddJobToFavouritesUseCase(sequelizeFavouriteJobsRepository);
 
         this.loggerInstance = new Logger();
 

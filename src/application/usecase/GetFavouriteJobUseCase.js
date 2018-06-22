@@ -1,4 +1,4 @@
-export default class AddJobToFavourites {
+export default class GetFavouriteJobUseCase {
     /**
      *
      * @param {FavouriteJobsRepository} favouriteJobsRepository
@@ -10,10 +10,9 @@ export default class AddJobToFavourites {
     /**
      *
      * @param {string} userId
-     * @param {string} jobId
-     * @returns {Promise<void>}
+     * @returns {Promise<Array<Job>>}
      */
-    invoke(userId, jobId) {
-        return this.favouriteJobsRepository.addFavouriteJobToUser(userId, jobId);
+    invoke(userId) {
+        return this.favouriteJobsRepository.getFavouriteJobsOfUser(userId);
     }
 }

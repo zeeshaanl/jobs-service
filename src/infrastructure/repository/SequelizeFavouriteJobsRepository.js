@@ -1,4 +1,5 @@
 import { FavouriteJobsRepository } from '../../domain/repository/FavouriteJobsRepository';
+import FavouriteJob from '../../domain/entity/FavouriteJob';
 
 /**
  * @implements {FavouriteJobsRepository}
@@ -11,7 +12,7 @@ export default class SequelizeFavouriteJobsRepository extends FavouriteJobsRepos
     constructor(sequelizeDatabaseObject) {
         super();
         this.sequelizeDatabaseObject = sequelizeDatabaseObject;
-        this.users = this.sequelizeDatabaseObject.sequelizeInstance.define('favouriteJobs', {
+        this.favouriteJobs = this.sequelizeDatabaseObject.sequelizeInstance.define('favouriteJobs', {
             userId: {
                 type: this.sequelizeDatabaseObject.sequelize.STRING,
                 allowNull: false
@@ -21,7 +22,12 @@ export default class SequelizeFavouriteJobsRepository extends FavouriteJobsRepos
                 allowNull: false
             },
         }, {
-            timestamps: false
+            indexes: [
+                {
+                    unique: true,
+                    fields: ['userId', 'jobId']
+                }
+            ]
         });
     }
 
@@ -31,7 +37,28 @@ export default class SequelizeFavouriteJobsRepository extends FavouriteJobsRepos
      * @returns {Promise<void>}
      *
      */
-    addFavouriteJobToUser(favouriteJob) {
+    async addFavouriteJobToUser(favouriteJob) {
+        await this.favouriteJobs.create(favouriteJob);
+    }
 
+    /**
+     *
+     * @param userId
+     * @returns {Promise<Array<Job>>}
+     */
+    async getFavouriteJobsOfUser(userId) {
+        const favouriteJobs = await this.favouriteJobs.findAll({
+            where: {
+                userId: userId
+            }
+        });
+        return favouriteJobs.map(favouriteJob => {
+                return new FavouriteJob({
+                    userId: favouriteJob.userId,
+                    jobId: favouriteJob.jobId,
+                    id: favouriteJob.id,
+                })
+            }
+        )
     }
 }

@@ -1,12 +1,15 @@
 import getJobs from './jobs/get';
 import postJobs from './jobs/post';
 import postUser from './users/post';
+import postFavouritJob from './favouriteJobs/post';
 
 const express = require('express');
 const router = express.Router();
 
 router.use(getJobs);
 router.use(postJobs);
+
+router.use(postFavouritJob);
 
 router.use(postUser);
 

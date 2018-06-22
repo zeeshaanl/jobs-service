@@ -11,4 +11,13 @@ export class UserRepository {
     createUser(user) {
         throw new Error('Not implemented yet');
     }
+
+    /**
+     *
+     * @param {string} userId
+     * @returns {Promise<User>}
+     */
+    getUserById(userId) {
+        throw new Error('Not implemented yet');
+    }
 }

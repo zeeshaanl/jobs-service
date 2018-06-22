@@ -16,32 +16,17 @@ exports.setup = function (options, seedLink) {
 
 exports.up = function (db) {
     const promises = [];
-    promises.push(db.createTable('favouriteJobs', {
-        columns: {
-            id: {
-                type: 'string',
-                notNull: true
-            },
-            userId: {
-                type: 'string',
-                notNull: true,
-                primaryKey: true
-            },
-            jobId: {
-                type: 'string',
-                notNull: true,
-                primaryKey: true
-            },
-        }
+    promises.push(db.addColumn('favouriteJobs', 'updatedAt', {
+        type: 'string',
+        length: '64',
+        notNull: true
     }));
     return Promise.all(promises);
 };
 
 exports.down = function (db) {
     var promises = [];
-
-    promises.push(db.dropTable('favouriteJobs'));
-
+    promises.push(db.removeColumn('favouriteJobs', 'updatedAt'));
     return Promise.all(promises);
 };
 
