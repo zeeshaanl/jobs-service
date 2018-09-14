@@ -9,3 +9,5 @@ ssh root@138.68.110.30 'bash -s' << EOF
     npm run db:create jobi
     npm run db:migration:up
 EOF
+
+#If Postgres authentication problem - https://stackoverflow.com/questions/10845998/i-forgot-the-password-i-entered-during-postgres-installation
